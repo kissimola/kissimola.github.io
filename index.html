@@ -1,1 +1,150 @@
-Hello!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Stock Analysis Portfolio</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .visualization {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Analysis Portfolio</h1>
+        
+        <!-- Placeholder for visualizations -->
+        <div id="line_plot" class="visualization">
+            <h2>Line Plot of Closing Prices Over Time</h2>
+        </div>
+
+        <div id="histogram" class="visualization">
+            <h2>Histogram of Daily Trading Volume</h2>
+        </div>
+
+        <!-- Add more visualization placeholders as needed -->
+
+    </div>
+
+    <script>
+        // Load data
+        d3.csv("data.csv").then(function(data) {
+            // Parse the data
+            data.forEach(d => {
+                d.Date = new Date(d.Date);
+                d.Close = +d.Close;
+                d.Volume = +d.Volume;
+            });
+
+            // Group data by ticker
+            const dataByTicker = d3.group(data, d => d.Ticker);
+
+            // Create colors for each ticker
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            // Line Plot of Closing Prices Over Time
+            const margin = { top: 20, right: 30, bottom: 40, left: 40 };
+            const width = 800 - margin.left - margin.right;
+            const height = 400 - margin.top - margin.bottom;
+
+            const svg1 = d3.select("#line_plot")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleTime()
+                .domain(d3.extent(data, d => d.Date))
+                .range([0, width]);
+
+            svg1.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x));
+
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(data, d => d.Close)])
+                .nice()
+                .range([height, 0]);
+
+            svg1.append("g")
+                .call(d3.axisLeft(y));
+
+            for (const [ticker, values] of dataByTicker) {
+                svg1.append("path")
+                    .datum(values)
+                    .attr("fill", "none")
+                    .attr("stroke", color(ticker))
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.line()
+                        .x(d => x(d.Date))
+                        .y(d => y(d.Close))
+                    );
+
+                svg1.append("text")
+                    .datum(values[values.length - 1])
+                    .attr("transform", d => `translate(${x(d.Date)},${y(d.Close)})`)
+                    .attr("x", 5)
+                    .attr("dy", "0.35em")
+                    .style("font", "10px sans-serif")
+                    .text(ticker);
+            }
+
+            // Histogram of Daily Trading Volume
+            const svg2 = d3.select("#histogram")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const histogram = d3.histogram()
+                .value(d => d.Volume)
+                .domain([0, d3.max(data, d => d.Volume)])
+                .thresholds(x.ticks(40));
+
+            const bins = histogram(data);
+
+            const y2 = d3.scaleLinear()
+                .domain([0, d3.max(bins, d => d.length)])
+                .range([height, 0]);
+
+            svg2.append("g")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x));
+
+            svg2.append("g")
+                .call(d3.axisLeft(y2));
+
+            svg2.selectAll("rect")
+                .data(bins)
+                .enter()
+                .append("rect")
+                .attr("x", 1)
+                .attr("transform", d => `translate(${x(d.x0)},${y2(d.length)})`)
+                .attr("width", d => x(d.x1) - x(d.x0) - 1)
+                .attr("height", d => height - y2(d.length))
+                .attr("fill", "#69b3a2");
+
+            // Add more visualizations as needed
+        });
+    </script>
+</body>
+</html>
