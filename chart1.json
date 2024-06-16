@@ -8,7 +8,7 @@
   "width": 400,
   "height": 300,
  
-  "data": {"url": "https://raw.githubusercontent.com/kissimola/kissimola.github.io/main/Adatok_energy_prod_and_cons.csv"},
+  "data": {"url": "https://github.com/kissimola/kissimola.github.io/main/Adatok_energy_prod_and_cons.csv"},
  
   "mark": "line",
  
