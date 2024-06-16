@@ -13,7 +13,7 @@
   "mark": "line",
  
   "encoding": {
-    "x": {"field": "Year", "type": "temporal", "title":null},
-    "y": {"field": "GDP pc", "type": "quantitative", "title":null}
+    "x": {"field": "DateTime", "type": "temporal", "title":null},
+    "y": {"field": "Consumption", "type": "quantitative", "title":null}
   }
 }
