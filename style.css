@@ -7,10 +7,11 @@ body{
     background-color: #074f57;
     background-image: url("background3.jpg");
     background-size: cover;
-    color: white;
+    color: black;
     padding-top: 150px;
-    padding-bottom: 400px;
+    padding-bottom: 200px;
 }
+
 
 p{
     text-align: center;
