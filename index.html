@@ -6,28 +6,116 @@
     <title>Románia áramtermelése és áramfogyasztása</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="upper">
-        <div class="container">
             <h1>Románia áramtermelésének és áramfogyasztásának elemzése</h1>
     
                  <div>
-                      <p style="margin-top: 0px; color: darkblue">
+                      <p style="margin-top: 0px; color: darkblue; font-size: 20px;">
                         Kiss Imola | <a href="https://www.linkedin.com/in/imola-kiss-06884b1a6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B33AZK1VmRzaRBJfQcxvaCw%3D%3D">LinkedIn</a> | <a href="https://github.com/kissimola/kissimola.github.io">GitHub</a>
                       </p>
                  </div>
         </div>
     </div>
     
-    <br>
-    <br>
-    <br>
-    <br>
+   
+<p>
+    Az alábbi weboldal Románia áramfelhasználását és az előállított energia mennyiségét mutatja be. Az erre vonatkozó adatok a 2019-2024 közötti periódust fedik le.<br>
+    Az mennyiségek Megawatt-ban vannak kifejezve és óránkénti gyakorisággal szerepelnek az adatbázisban.<br>
+    Az előállított energiát megtaláljuk típusra lebontva is, amely azt mutatja, hogy milyen erőforrásból lett az előállítva. Ezek az erőforrások lehetnek a hagyományos fosszilis tüzelőanyagok vagy megújuló erőforrások: nap, víz, szél.
+</p>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<section>
     <h3>Hogyan alakult Románia áramtermelése és -fogyasztása 2019-2024 között?</h3>
     <div>
         <img src="Áramtermelés és áramfogyasztás.png" alt="Sample Chart" width=1000 height=400>  
     </div>
-    
+    <p>
+    Ahogy látható az országban nem mindig van átfedés az előállított mennyiség és a fogyasztás között, ami azt jelenti, hogy vannak napok amikor túltermelés áll fenn és olyanok is előfordulnak amikor a szükségesnél kevesebb kerül előállításra.
+    </p>
+</section>  
+
+<br>
+<br>
+
+<section>
+    <h3>Energia export és import alakulása</h3>
+    <div>
+        <img src="Áram export és import.png" alt="Sample Chart" width=1000 height=400>  
+    </div>
+    <p>
+    A fentebbi ábrához szükséges volt egy új változó kiszámítása: delta=Termelés-Fogyasztás. Amikor a delta változó pozitív akkor a többlet exportálásra kerül, amikor pedig negatív a hiányt importból pótoljuk.
+    </p>
+</section> 
+
+<br>
+<br>
+
+<section>
+    <h3>Hogyan alakul az áramfogyasztás egy hét leforgása alatt?</h3>
+    <div>
+        <img src="Egy heti áramfogyasztás.png" alt="Sample Chart" width=1000 height=400>  
+    </div>
+    <p>
+    Az ábrán az áramfogyasztás mennyisége került ábrázolásra 2024. március 4 és 2024. március 10 között. A vizsgált periódus egy hét: hétfőtől vasárnapig.<br>
+    Érdekes látni, hogy szombaton és vasárnap jelentősen kevesebb az áramfogyasztás.
+    </p>
+</section> 
+
+<br>
+<br>
+
+<section>
+    <h3>Hogyan alakul az áramtermelés a forrás típusa szerint?</h3>
+    <div>
+        <img src="Nukleáris-energia termelés.png" alt="Sample Chart" width=700 height=400>  
+        <img src="Szenbol szarmazo energia.png" alt="Sample Chart" width=700 height=400>
+        <img src="Vízenergia termelés.png" alt="Sample Chart" width=700 height=400>
+        <img src="Szelenergia termeles.png" alt="Sample Chart" width=700 height=400>
+        <img src="Napenergia termelés.png" alt="Sample Chart" width=700 height=400>
+        <img src="Biomassza.png" alt="Sample Chart" width=700 height=400>
+
+
+    </div>
+    <p>
+    A nukleáris energia a legstabilabb mind közül, kivéve néhány rövidebb periódust amikor visszaesett a termelés. A következő legkevésbé volatilis a szénenergia. Ettől függetlenül jelentős mennyiségű energia született megújuló energiaforrásból. Az élen a vízenergia áll.
+    </p>
+</section> 
+<br>
+<br>
+<section>
+    <h3>Melyik megújuló energiaforrást tudtuk a legjobban hasznosítani 2023 márciusa és 2024 márciusa között?</h3>
+    <div>
+        <img src="Megujulo aramtermeles.png" alt="Sample Chart" width=700 height=400>  
+
+    </div>
+    <p>
+    A vízenergia felhasználásával tudtuk a legtöbb áramot termelni a vizsgált év alatt. A legkevesebbet pedig a napenergiából nyertük.
+    </p>
+</section> 
+
+<br>
+<br>
+
+<section>
+    <h3>Milyen típusú energiaforrásokat használtunk energiatermelésre az adott évben és milyen arányban?</h3>
+    <div>
+        <img src="Aramtermeles evekre lebontva.png" alt="Sample Chart" width=700 height=700>  
+
+    </div>
+    <p>Jó látni, hogy a vízenergia játsza a főszerepet az áramtermelésünkben. Viszont a napenergia és a biomassza felhasználása még háttérbe szorul.
+    </p>
+</section> 
+
+
+
 </body>
 </html>
