@@ -4,5 +4,22 @@ body{
 }
 
 .upper{
-    background-image: ;
+    background-color: #074f57;
+    background-image: url("background2.jpg");
+    background-size: cover;
+    color: white;
+    padding-top: 150px;
+    padding-bottom: 400px;
+}
+
+p{
+    text-align: center;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+div{
+    text-align: center;
 }
